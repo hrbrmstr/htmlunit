@@ -1,6 +1,6 @@
 Package: htmlunit
 Type: Package
-Title: htmlunit title goes here otherwise CRAN checks fail
+Title: Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library
 Version: 0.1.0
 Date: 2018-12-16
 Authors@R: c(
@@ -8,17 +8,29 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-5670-2640"))
   )
 Maintainer: Bob Rudis <bob@rud.is>
-Description: A good description goes here otherwise CRAN checks fail.
+Description: 'HtmlUnit' (<http://htmlunit.sourceforge.net/>) is a "'GUI'-Less 
+    browser for 'Java' programs". It models 'HTML' documents and provides an 'API' 
+    that allows one to invoke pages, fill out forms, click links and more just like 
+    one does in a "normal" browser. The library has fairly good and constantly
+    improving 'JavaScript' support and is able to work even with quite complex 'AJAX' 
+    libraries, simulating 'Chrome', 'Firefox' or 'Internet Explorer' depending on
+    the configuration used. It is typically used for testing purposes or to retrieve 
+    information from web sites. Tools are provided to work with this library
+    at a higher level than provided by the exposed 'Java' libraries in the 
+    'htmlunitjars' package.
 URL: https://gitlab.com/hrbrmstr/htmlunit
 BugReports: https://gitlab.com/hrbrmstr/htmlunit/issues
 Encoding: UTF-8
-License: AGPL
+License: Apache License 2.0 | file LICENSE
 Suggests:
     testthat,
     covr
 Depends:
-    R (>= 3.2.0)
-Imports:
-    httr,
-    jsonlite
+    R (>= 3.2.0),
+    rJava,
+    htmlunitjars,
+    rvest
 RoxygenNote: 6.1.1
+Remotes: hrbrmstr/htmlunitjars
+Imports: 
+    magrittr
