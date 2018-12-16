@@ -23,7 +23,7 @@ provided by the exposed ‘Java’ libraries in the
 
 The following functions are implemented:
 
-  - `hu_read_html`: Read HTML from a URL with Browser Emualtion & in a
+  - `hu_read_html`: Read HTML from a URL with Browser Emulation & in a
     JavaScript Context
 
 ## Installation
