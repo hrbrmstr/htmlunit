@@ -27,7 +27,7 @@ package.
 
 The following functions are implemented:
 
-- `hu_read_html`:	Read HTML from a URL with Browser Emualtion & in a JavaScript Context
+- `hu_read_html`:	Read HTML from a URL with Browser Emulation & in a JavaScript Context
 
 ## Installation
 
