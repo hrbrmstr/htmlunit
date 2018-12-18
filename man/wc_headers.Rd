@@ -7,15 +7,15 @@
 wc_headers(wc_obj)
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 }
 \value{
-the response headers of the web request as a data frame or `NULL` if no active page
+the response headers of the web request as a data frame or \code{NULL} if no active page
 }
 \description{
 Return response headers of the last web request for current page
 }
 \note{
 This is an information retrieval function that does not return
-      the `wc_obj` so must be the last function call in a `webclient` pipe.
+the \code{wc_obj} so must be the last function call in a \code{webclient} pipe.
 }

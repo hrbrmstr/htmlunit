@@ -29,6 +29,7 @@ web_client <- function(emulate = c("best", "chrome", "firefox", "ie"),
   wc_opts <- wc$getOptions()
   wc_opts$setThrowExceptionOnFailingStatusCode(FALSE)
   wc_opts$setThrowExceptionOnScriptError(FALSE)
+  wc_opts$setDownloadImages(FALSE)
 
   list(
     wc = wc,
@@ -40,6 +41,10 @@ web_client <- function(emulate = c("best", "chrome", "firefox", "ie"),
   invisible(wc_obj)
 
 }
+
+#' @rdname web_client
+#' @export
+webclient <- web_client
 
 #' Visit a URL
 #'

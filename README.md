@@ -23,14 +23,27 @@ provided by the exposed ‘Java’ libraries in the
 
 The following functions are implemented:
 
-### Standard
-
-  - `hu_read_html`: Read HTML from a URL with Browser Emulation & in a
-    JavaScript Context
-
 ### DSL
 
-  - `web_client`: Create a new HtmlUnit WebClient instance
+  - `web_client`/`webclient`: Create a new HtmlUnit WebClient
+    instance<br/><br/>
+
+  - `wc_go`: Visit a URL<br/>
+
+  - `wc_html_nodes`: Select nodes from web client active page html
+    content
+
+  - `wc_html_text`: Extract attributes, text and tag name from webclient
+    page html content<br/><br/>
+
+  - `wc_html_attr`: Extract attributes, text and tag name from webclient
+    page html content
+
+  - `wc_html_name`: Extract attributes, text and tag name from webclient
+    page html content
+
+  - `wc_headers`: Return response headers of the last web request for
+    current page
 
   - `wc_browser_info`: Retreive information about the browser used to
     create the ‘webclient’
@@ -39,7 +52,9 @@ The following functions are implemented:
     for current page
 
   - `wc_content_type`: Return content type of web request for current
-    page
+    page<br/><br/>
+
+  - `wc_render`: Retrieve current page contents<br/><br/>
 
   - `wc_css`: Enable/Disable CSS support
 
@@ -47,17 +62,10 @@ The following functions are implemented:
 
   - `wc_geo`: Enable/Disable Geolocation
 
-  - `wc_go`: Visit a URL
-
-  - `wc_headers`: Return response headers of the last web request for
-    current page
-
   - `wc_img_dl`: Enable/Disable Image Downloading
 
   - `wc_load_time`: Return load time of the last web request for current
     page
-
-  - `wc_render`: Retrieve current page contents
 
   - `wc_resize`: Resize the virtual browser window
 
@@ -73,6 +81,11 @@ The following functions are implemented:
 
   - `wc_wait`: Block HtlUnit final rendering blocks until all background
     JavaScript tasks have finished executing
+
+### Just the Content (pls)
+
+  - `hu_read_html`: Read HTML from a URL with Browser Emulation & in a
+    JavaScript Context
 
 ## Installation
 
@@ -130,17 +143,73 @@ wc <- web_client()
 wc %>% wc_browser_info()
 ## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36 / en-US >
 
-wc %>% wc_go(test_url)
+wc <- web_client()
 
-wc %>% wc_render("html") 
-## [1] "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<html>\r\n  <head>\r\n    <meta charset=\"utf-8\"/>\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\r\n    <title>\r\n    </title>\r\n    <meta name=\"description\" content=\"\"/>\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\r\n    <link rel=\"stylesheet\" href=\"\"/>\r\n  </head>\r\n  <body>\r\n    <script>\r\n//<![CDATA[\r\n\n\n      function createTable(tableData) {\n        var table = document.createElement('table');\n        var row = {};\n        var cell = {};\n      \n        tableData.forEach(function(rowData) {\n          row = table.insertRow(-1);\n          rowData.forEach(function(cellData) {\n            cell = row.insertCell();\n            cell.textContent = cellData;\n          });\n        });\n        document.body.appendChild(table);\n      }\n      \n      createTable([\n        [\"One\", \"Two\"], \n        [\"Three\", \"Four\"], \n        [\"Five\", \"Six\"]\n      ]);\n\n    \r\n//]]>\r\n    </script>\r\n    <table>\r\n      <tbody>\r\n        <tr>\r\n          <td>\r\n            One\r\n          </td>\r\n          <td>\r\n            Two\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td>\r\n            Three\r\n          </td>\r\n          <td>\r\n            Four\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td>\r\n            Five\r\n          </td>\r\n          <td>\r\n            Six\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </body>\r\n</html>\r\n"
+wc %>% wc_go("https://usa.gov/")
 
-wc %>% wc_render("parsed") 
-## {xml_document}
-## <html>
-## [1] <head>\n<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">\n<meta charset="utf-8">\n<meta http-e ...
-## [2] <body>\r\n    <script>\r\n//<![CDATA[\r\n\n\n      function createTable(tableData) {\n        var table = documen ...
+# if you want to use purrr::map_ functions the result of wc_html_nodes() needs to be passed to as.list()
 
-wc %>% wc_render("text") 
-## [1] "One\tTwo\nThree\tFour\nFive\tSix"
+wc %>%
+  wc_html_nodes("a") %>%
+  sapply(wc_html_text, trim = TRUE) %>% 
+  head(10)
+##  [1] "Skip to main content"      ""                          "1-844-USA-GOV1"            "All Topics and Services"  
+##  [5] "Benefits"                  "Help with Bills"           "Grants and Loans"          "Food Assistance"          
+##  [9] "Social Security Questions" "Affordable Rental Housing"
+
+wc %>%
+  wc_html_nodes(xpath=".//a") %>%
+  sapply(wc_html_text, trim = TRUE) %>% 
+  head(10)
+##  [1] "Skip to main content"      ""                          "1-844-USA-GOV1"            "All Topics and Services"  
+##  [5] "Benefits"                  "Help with Bills"           "Grants and Loans"          "Food Assistance"          
+##  [9] "Social Security Questions" "Affordable Rental Housing"
+
+wc %>%
+  wc_html_nodes(xpath=".//a") %>%
+  sapply(wc_html_attr, "href") %>% 
+  head(10)
+##  [1] "#skiptarget"            "/"                      "/phone"                 "/topics"               
+##  [5] "/benefits"              "/help-with-bills"       "/grants"                "/food-help"            
+##  [9] "/about-social-security" "/finding-home"
+```
+
+Handy function to get rendered plain text for text mining:
+
+``` r
+wc %>% 
+  wc_render("text") %>% 
+  substr(1, 300) %>% 
+  cat()
+## Official Guide to Government Information and Services | USAGov
+## Skip to main content
+## 
+## 
+## An official website of the United States government Here's how you know
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## Search
+##  Search
+## 
+## 
+## Search
+##  1-844-USA-GOV1
+## 
+## 
+## 
+## All Topics and Services
+## 
+## 
+## Benefits, Grants, Loans
+## 
+## 
+## Government Agencies and Elected Offic
 ```

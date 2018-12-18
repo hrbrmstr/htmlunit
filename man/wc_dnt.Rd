@@ -7,19 +7,19 @@
 wc_dnt(wc_obj, enable)
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 
-\item{enable}{if `TRUE` enable Do-Not-Track support (which is the HtmlUnit default)}
+\item{enable}{if \code{TRUE} enable Do-Not-Track support (which is the HtmlUnit default)}
 }
 \value{
-the `webclient` object (invisibly)
+the \code{webclient} object (invisibly)
 }
 \description{
 Enable/Disable Do-Not-Track
 }
 \note{
 The caller does not have to assign the output of this function to a
-      variable as the browser state is managed internally by HtmlUnit.
+variable as the browser state is managed internally by HtmlUnit.
 }
 \seealso{
 Other wc_opts: \code{\link{wc_css}}, \code{\link{wc_geo}},

@@ -2,16 +2,16 @@
 % Please edit documentation in R/web-client.R
 \name{print.browserinfo}
 \alias{print.browserinfo}
-\title{Print method for `browserinfo` objects}
+\title{Print method for \code{browserinfo} objects}
 \usage{
 \method{print}{browserinfo}(x, ...)
 }
 \arguments{
-\item{x}{`browserinfo` object}
+\item{x}{\code{browserinfo} object}
 
 \item{...}{unused}
 }
 \description{
-Print method for `browserinfo` objects
+Print method for \code{browserinfo} objects
 }
 \keyword{internal}

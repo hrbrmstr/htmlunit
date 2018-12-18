@@ -53,7 +53,7 @@ wc_dnt <- function(wc_obj, enable) {
 #' @note The caller does not have to assign the output of this function to a
 #'       variable as the browser state is managed internally by HtmlUnit.
 #' @param wc_obj a `webclient` object
-#' @param enable if `TRUE` enable image downloading (which is the HtmlUnit default)
+#' @param enable if `TRUE` enable image downloading (the default is not to download images)
 #' @return the `webclient` object (invisibly)
 #' @family wc_opts
 #' @export
