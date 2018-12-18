@@ -31,11 +31,48 @@ The following functions are implemented:
 ### DSL
 
   - `web_client`: Create a new HtmlUnit WebClient instance
-  - `wc_go`: Visit a URL
+
   - `wc_browser_info`: Retreive information about the browser used to
     create the ‘webclient’
-  - `wc_status`: Return status code of web request for current page
+
+  - `wc_content_length`: Return content length of the last web request
+    for current page
+
+  - `wc_content_type`: Return content type of web request for current
+    page
+
+  - `wc_css`: Enable/Disable CSS support
+
+  - `wc_dnt`: Enable/Disable Do-Not-Track
+
+  - `wc_geo`: Enable/Disable Geolocation
+
+  - `wc_go`: Visit a URL
+
+  - `wc_headers`: Return response headers of the last web request for
+    current page
+
+  - `wc_img_dl`: Enable/Disable Image Downloading
+
+  - `wc_load_time`: Return load time of the last web request for current
+    page
+
   - `wc_render`: Retrieve current page contents
+
+  - `wc_resize`: Resize the virtual browser window
+
+  - `wc_status`: Return status code of web request for current page
+
+  - `wc_timeout`: Change default request timeout
+
+  - `wc_title`: Return page title for current page
+
+  - `wc_url`: Return load time of the last web request for current page
+
+  - `wc_use_insecure_ssl`: Enable/Disable Ignoring SSL Validation Issues
+
+  - `wc_wait`: Block HtlUnit final rendering blocks until all background
+    JavaScript tasks have finished executing
 
 ## Installation
 
