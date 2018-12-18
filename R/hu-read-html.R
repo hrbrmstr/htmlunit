@@ -82,6 +82,9 @@ hu_read_html <- function(url,
 
   pg <- wc$getPage(test_url)
 
+  # response <- pg$getWebResponse()
+  # content <- response$getContentAsString()
+
   if (ret == "html_document") return(xml2::read_html(pg$asXml(), options = options))
 
   return(pg$asText())

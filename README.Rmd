@@ -2,7 +2,7 @@
 output: rmarkdown::github_document
 ---
 ```{r include=FALSE}
-knitr::opts_chunk$set(message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, collapse=TRUE)
 ```
 # htmlunit
 
@@ -27,7 +27,17 @@ package.
 
 The following functions are implemented:
 
+### Standard
+
 - `hu_read_html`:	Read HTML from a URL with Browser Emulation & in a JavaScript Context
+
+### DSL
+
+- `web_client`:	Create a new HtmlUnit WebClient instance
+- `wc_go`:	Visit a URL
+- `wc_browser_info`:	Retreive information about the browser used to create the 'webclient'
+- `wc_status`:	Return status code of web request for current page
+- `wc_render`:	Retrieve current page contents
 
 ## Installation
 
@@ -73,3 +83,19 @@ html_table(pg)
 ```
 
 All without needing a separate Selenium or Splash server instance.
+
+### DSL
+
+```{r}
+wc <- web_client()
+
+wc %>% wc_browser_info()
+
+wc %>% wc_go(test_url)
+
+wc %>% wc_render("html") 
+
+wc %>% wc_render("parsed") 
+
+wc %>% wc_render("text") 
+```
