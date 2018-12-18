@@ -7,15 +7,15 @@
 wc_render(wc_obj, what = c("parsed", "html", "text"))
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 
 \item{what}{what to return (see Details); NOTE that if there is no active
-page this function returns `NULL`.}
+page this function returns \code{NULL}.}
 }
 \value{
-if `what` is `parsed`, an `xml2` `html_document`; if `html`,
-        the character HTML representation of the page; if `text`
-        the rendered text of the document as viewed by a human.
+if \code{what} is \code{parsed}, an \code{xml2} \code{html_document}; if \code{html},
+the character HTML representation of the page; if \code{text}
+the rendered text of the document as viewed by a human.
 }
 \description{
 If there is a page in the active browser context, return the contents of
@@ -23,15 +23,16 @@ the page.
 }
 \details{
 The page contents can be returned as one of:
-
-- Parsed HTML (i.e. an `xml2` `html_document`)
-- A string representation of the HTML document. NOTE: The charset used is the
-  current page encoding.
-- A textual representation of this page that represents what would be visible
-  to the user if this page was shown in a web browser. This is useful for,
-  say, text mining.
+\itemize{
+\item Parsed HTML (i.e. an \code{xml2} \code{html_document})
+\item A string representation of the HTML document. NOTE: The charset used is the
+current page encoding.
+\item A textual representation of this page that represents what would be visible
+to the user if this page was shown in a web browser. This is useful for,
+say, text mining.
+}
 }
 \note{
 This is an information retrieval function that does not return
-      the `wc_obj` so must be the last function call in a `webclient` pipe.
+the \code{wc_obj} so must be the last function call in a \code{webclient} pipe.
 }

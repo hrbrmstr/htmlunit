@@ -7,15 +7,15 @@
 wc_content_length(wc_obj)
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 }
 \value{
-the content length (in bytes) of the web request or `NULL` if no active page
+the content length (in bytes) of the web request or \code{NULL} if no active page
 }
 \description{
 Return content length of the last web request for current page
 }
 \note{
 This is an information retrieval function that does not return
-      the `wc_obj` so must be the last function call in a `webclient` pipe.
+the \code{wc_obj} so must be the last function call in a \code{webclient} pipe.
 }

@@ -7,19 +7,19 @@
 wc_resize(wc_obj, h, w)
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 
 \item{h, w}{height and width (pixels)}
 }
 \value{
-the `webclient` object (invisibly)
+the \code{webclient} object (invisibly)
 }
 \description{
 Resize the virtual browser window
 }
 \note{
 The caller does not have to assign the output of this function to a
-      variable as the browser state is managed internally by HtmlUnit.
+variable as the browser state is managed internally by HtmlUnit.
 }
 \seealso{
 Other wc_opts: \code{\link{wc_css}}, \code{\link{wc_dnt}},

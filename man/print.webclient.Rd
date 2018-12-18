@@ -2,16 +2,16 @@
 % Please edit documentation in R/web-client.R
 \name{print.webclient}
 \alias{print.webclient}
-\title{Print method for `webclient` objects}
+\title{Print method for \code{webclient} objects}
 \usage{
 \method{print}{webclient}(x, ...)
 }
 \arguments{
-\item{x}{`webclient` object}
+\item{x}{\code{webclient} object}
 
 \item{...}{unused}
 }
 \description{
-Print method for `webclient` objects
+Print method for \code{webclient} objects
 }
 \keyword{internal}

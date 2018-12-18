@@ -7,19 +7,19 @@
 wc_img_dl(wc_obj, enable)
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 
-\item{enable}{if `TRUE` enable image downloading (which is the HtmlUnit default)}
+\item{enable}{if \code{TRUE} enable image downloading (the default is not to download images)}
 }
 \value{
-the `webclient` object (invisibly)
+the \code{webclient} object (invisibly)
 }
 \description{
 Enable/Disable Image Downloading
 }
 \note{
 The caller does not have to assign the output of this function to a
-      variable as the browser state is managed internally by HtmlUnit.
+variable as the browser state is managed internally by HtmlUnit.
 }
 \seealso{
 Other wc_opts: \code{\link{wc_css}}, \code{\link{wc_dnt}},

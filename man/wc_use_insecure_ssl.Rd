@@ -7,20 +7,20 @@
 wc_use_insecure_ssl(wc_obj, enable)
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 
-\item{enable}{if `TRUE` the client will accept connections to any host,
+\item{enable}{if \code{TRUE} the client will accept connections to any host,
 regardless of whether they have valid certificates or not}
 }
 \value{
-the `webclient` object (invisibly)
+the \code{webclient} object (invisibly)
 }
 \description{
 Enable/Disable Ignoring SSL Validation Issues
 }
 \note{
 The caller does not have to assign the output of this function to a
-      variable as the browser state is managed internally by HtmlUnit.
+variable as the browser state is managed internally by HtmlUnit.
 }
 \seealso{
 Other wc_opts: \code{\link{wc_css}}, \code{\link{wc_dnt}},

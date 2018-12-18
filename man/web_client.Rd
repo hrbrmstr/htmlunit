@@ -8,19 +8,19 @@ web_client(emulate = c("best", "chrome", "firefox", "ie"),
   proxy_host = NULL, proxy_port = NULL)
 }
 \arguments{
-\item{emulate}{browser to emulate; one of "`best`", "`chrome`", "`firefox`", "`ie`"}
+\item{emulate}{browser to emulate; one of "\code{best}", "\code{chrome}", "\code{firefox}", "\code{ie}"}
 
 \item{proxy_host, proxy_port}{the server/port that will act as proxy (default
-`NULL` = no proxy)}
+\code{NULL} = no proxy)}
 }
 \value{
-`webclient` object
+\code{webclient} object
 }
 \description{
-A new HtmlUnit web client (virtual browser) will be created and a `webclient`
+A new HtmlUnit web client (virtual browser) will be created and a \code{webclient}
 object will be returned.
 }
 \details{
-This is part of the `htmlunit` DSL interface.s
+This is part of the \code{htmlunit} DSL interface.s
 }
 \concept{dsl}

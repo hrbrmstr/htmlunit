@@ -7,17 +7,17 @@
 wc_go(wc_obj, url)
 }
 \arguments{
-\item{wc_obj}{a `webclient` object}
+\item{wc_obj}{a \code{webclient} object}
 
 \item{url}{URL to retrieve}
 }
 \value{
-the `webclient` object (invisibly)
+the \code{webclient} object (invisibly)
 }
 \description{
 Visit a URL
 }
 \note{
 The caller does not have to assign the output of this function to a
-      variable as the browser state is managed internally by HtmlUnit.
+variable as the browser state is managed internally by HtmlUnit.
 }

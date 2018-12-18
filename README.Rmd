@@ -27,25 +27,29 @@ package.
 
 The following functions are implemented:
 
-### Standard
-
-- `hu_read_html`:	Read HTML from a URL with Browser Emulation & in a JavaScript Context
-
 ### DSL
 
-- `web_client`:	Create a new HtmlUnit WebClient instance
+- `web_client`/`webclient`:	Create a new HtmlUnit WebClient instance<br/><br/>
 
+- `wc_go`:	Visit a URL<br/>
+
+- `wc_html_nodes`:	Select nodes from web client active page html content
+- `wc_html_text`:	Extract attributes, text and tag name from webclient page html content<br/><br/>
+- `wc_html_attr`:	Extract attributes, text and tag name from webclient page html content
+- `wc_html_name`:	Extract attributes, text and tag name from webclient page html content
+
+- `wc_headers`:	Return response headers of the last web request for current page
 - `wc_browser_info`:	Retreive information about the browser used to create the 'webclient'
 - `wc_content_length`:	Return content length of the last web request for current page
-- `wc_content_type`:	Return content type of web request for current page
+- `wc_content_type`:	Return content type of web request for current page<br/><br/>
+
+- `wc_render`:	Retrieve current page contents<br/><br/>
+
 - `wc_css`:	Enable/Disable CSS support
 - `wc_dnt`:	Enable/Disable Do-Not-Track
 - `wc_geo`:	Enable/Disable Geolocation
-- `wc_go`:	Visit a URL
-- `wc_headers`:	Return response headers of the last web request for current page
 - `wc_img_dl`:	Enable/Disable Image Downloading
 - `wc_load_time`:	Return load time of the last web request for current page
-- `wc_render`:	Retrieve current page contents
 - `wc_resize`:	Resize the virtual browser window
 - `wc_status`:	Return status code of web request for current page
 - `wc_timeout`:	Change default request timeout
@@ -53,6 +57,10 @@ The following functions are implemented:
 - `wc_url`:	Return load time of the last web request for current page
 - `wc_use_insecure_ssl`:	Enable/Disable Ignoring SSL Validation Issues
 - `wc_wait`:	Block HtlUnit final rendering blocks until all background JavaScript tasks have finished executing
+
+### Just the Content (pls)
+
+- `hu_read_html`:	Read HTML from a URL with Browser Emulation & in a JavaScript Context
 
 ## Installation
 
@@ -106,11 +114,33 @@ wc <- web_client()
 
 wc %>% wc_browser_info()
 
-wc %>% wc_go(test_url)
+wc <- web_client()
 
-wc %>% wc_render("html") 
+wc %>% wc_go("https://usa.gov/")
 
-wc %>% wc_render("parsed") 
+# if you want to use purrr::map_ functions the result of wc_html_nodes() needs to be passed to as.list()
 
-wc %>% wc_render("text") 
+wc %>%
+  wc_html_nodes("a") %>%
+  sapply(wc_html_text, trim = TRUE) %>% 
+  head(10)
+
+wc %>%
+  wc_html_nodes(xpath=".//a") %>%
+  sapply(wc_html_text, trim = TRUE) %>% 
+  head(10)
+
+wc %>%
+  wc_html_nodes(xpath=".//a") %>%
+  sapply(wc_html_attr, "href") %>% 
+  head(10)
+```
+
+Handy function to get rendered plain text for text mining:
+
+```{r}
+wc %>% 
+  wc_render("text") %>% 
+  substr(1, 300) %>% 
+  cat()
 ```

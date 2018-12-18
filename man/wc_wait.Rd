@@ -7,7 +7,7 @@
 wc_wait(wc_obj, js_delay = 2000L)
 }
 \arguments{
-\item{js_delay}{a `webclient` object}
+\item{js_delay}{a \code{webclient} object}
 
 \item{wait}{number of ms to wait/block}
 }
@@ -16,7 +16,7 @@ Block HtlUnit final rendering blocks until all background JavaScript tasks have 
 }
 \note{
 The caller does not have to assign the output of this function to a
-      variable as the browser state is managed internally by HtmlUnit.
+variable as the browser state is managed internally by HtmlUnit.
 }
 \seealso{
 Other wc_opts: \code{\link{wc_css}}, \code{\link{wc_dnt}},
