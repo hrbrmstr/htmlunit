@@ -2,9 +2,13 @@
 % Please edit documentation in R/web-client.R
 \name{web_client}
 \alias{web_client}
+\alias{webclient}
 \title{Create a new HtmlUnit WebClient instance}
 \usage{
 web_client(emulate = c("best", "chrome", "firefox", "ie"),
+  proxy_host = NULL, proxy_port = NULL)
+
+webclient(emulate = c("best", "chrome", "firefox", "ie"),
   proxy_host = NULL, proxy_port = NULL)
 }
 \arguments{
