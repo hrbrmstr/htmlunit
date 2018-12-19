@@ -1,11 +1,11 @@
-#' Fill in a input box in a form field
+#' Click on a DOM element in a webclient loaded page
 #'
 #' @note The caller does not have to assign the output of this function to a
 #'       variable as the browser state is managed internally by HtmlUnit.
 #' @param wc_obj a `webclient` object
-#' @param css,xpath Node to select. Supply one of css or xpath depending on whether you want to use a css or xpath 1.0 selector.
+#' @param css,xpath Node to click on. Supply one of css or xpath depending on whether you want to use a css or xpath 1.0 selector.
 #' @export
-wc_fill_in <- function(wc_obj, value, css, xpath) {
+wc_click_on <- function(wc_obj, css, xpath) {
 
   pg <- wc_obj$wc$getCurrentWindow()$getEnclosedPage()
 
@@ -35,7 +35,7 @@ wc_fill_in <- function(wc_obj, value, css, xpath) {
   } else if (length(item) > 1) {
     warning("More than one item found with that selector.")
   } else {
-
+    item$click()
   }
 
   return(wc_obj)
