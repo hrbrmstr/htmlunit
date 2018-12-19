@@ -26,14 +26,21 @@ web_client <- function(emulate = c("best", "chrome", "firefox", "ie"),
   ) -> use_browser
 
   wc <- new(J("com.gargoylesoftware.htmlunit.WebClient"), use_browser)
-  wc_opts <- wc$getOptions()
-  wc_opts$setThrowExceptionOnFailingStatusCode(FALSE)
-  wc_opts$setThrowExceptionOnScriptError(FALSE)
-  wc_opts$setDownloadImages(FALSE)
+
+  wc$getOptions()$setThrowExceptionOnFailingStatusCode(FALSE)
+  wc$getOptions()$setThrowExceptionOnScriptError(FALSE)
+  wc$getOptions()$setDownloadImages(FALSE)
+  wc$getOptions()$setJavaScriptEnabled(TRUE)
+  wc$getOptions()$setCssEnabled(TRUE)
+  wc$getOptions()$setDoNotTrackEnabled(FALSE)
+  wc$getOptions()$setGeolocationEnabled(TRUE)
+  wc$getOptions()$setPopupBlockerEnabled(FALSE)
+  wc$getOptions()$setPrintContentOnFailingStatusCode(TRUE)
+  wc$getOptions()$setRedirectEnabled(TRUE)
 
   list(
     wc = wc,
-    wc_opts = wc_opts
+    wc_opts = wc$getOptions()
   ) -> wc_obj
 
   class(wc_obj) <- c("webclient")
@@ -120,6 +127,31 @@ print.browserinfo <- function(x, ...) {
 #' @export
 print.webclient <- function(x, ...) {
 
-  cat("<webclient>\n")
+  bv <- x$wc$getBrowserVersion()
+
+  cat(
+    sprintf(
+      "<webclient - %s %s; %s>\n",
+      bv$getApplicationName(),
+      bv$getApplicationVersion(),
+      bv$getBrowserLanguage())
+  )
+
+  pg <- x$wc$getCurrentWindow()$getEnclosedPage()
+
+  if (!(.jnull() == pg)) {
+
+    cat(sprintf("     Current URL: <%s>\n", pg$getUrl()$toString()))
+
+    if (pg$getTitleText() != "") cat(sprintf("      Page Title: <%s>\n", pg$getTitleText()))
+
+    r <- pg$getWebResponse()
+
+    cat(sprintf("     Status Code: %s\n", r$getStatusCode()))
+    cat(sprintf("    Content Type: %s\n", r$getContentType()))
+    cat(sprintf("  Content Length: %s bytes\n", prettyNum(r$getContentLength(), big.mark=",")))
+    cat(sprintf("       Load Time: %s ms\n", prettyNum(r$getLoadTime(), big.mark=",")))
+
+  }
 
 }
