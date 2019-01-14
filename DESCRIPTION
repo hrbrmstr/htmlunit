@@ -5,7 +5,8 @@ Version: 0.1.0
 Date: 2018-12-16
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
-           comment = c(ORCID = "0000-0001-5670-2640"))
+           comment = c(ORCID = "0000-0001-5670-2640")),
+    person("Everet", "Rummel", email = "everet.rummel@gmail.com", role = "ctb")
   )
 Maintainer: Bob Rudis <bob@rud.is>
 Description: 'HtmlUnit' (<http://htmlunit.sourceforge.net/>) is a "'GUI'-Less 
