@@ -80,7 +80,7 @@ hu_read_html <- function(url,
   if (enable_dnt) wc_opts$setDoNotTrackEnabled(TRUE)
   if (download_images) wc_opts$setDownloadImages(TRUE)
 
-  pg <- wc$getPage(test_url)
+  pg <- wc$getPage(url)
 
   # response <- pg$getWebResponse()
   # content <- response$getContentAsString()
