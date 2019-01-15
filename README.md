@@ -1,3 +1,6 @@
+[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/htmlunit.svg?branch=master)](https://travis-ci.org/hrbrmstr/htmlunit)
+[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/htmlunit/master.svg)](https://codecov.io/github/hrbrmstr/htmlunit?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/htmlunit)](https://cran.r-project.org/package=htmlunit)
 
 # htmlunit
 
