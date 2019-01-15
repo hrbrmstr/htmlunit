@@ -1,6 +1,9 @@
-[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/htmlunit.svg?branch=master)](https://travis-ci.org/hrbrmstr/htmlunit)
-[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/htmlunit/master.svg)](https://codecov.io/github/hrbrmstr/htmlunit?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/htmlunit)](https://cran.r-project.org/package=htmlunit)
+
+[![Travis-CI Build
+Status](https://travis-ci.org/hrbrmstr/htmlunit.svg?branch=master)](https://travis-ci.org/hrbrmstr/htmlunit)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/hrbrmstr/htmlunit/master.svg)](https://codecov.io/github/hrbrmstr/htmlunit?branch=master)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/htmlunit)](https://cran.r-project.org/package=htmlunit)
 
 # htmlunit
 
@@ -216,3 +219,16 @@ wc %>%
 ## 
 ## Government Agencies and Elected Offic
 ```
+
+### htmlunit Metrics
+
+| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
+| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
+| R    |       12 | 0.92 | 314 | 0.91 |         182 | 0.79 |      364 | 0.82 |
+| Rmd  |        1 | 0.08 |  32 | 0.09 |          49 | 0.21 |       81 | 0.18 |
+
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.

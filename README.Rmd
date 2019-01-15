@@ -4,6 +4,11 @@ output: rmarkdown::github_document
 ```{r include=FALSE}
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, collapse=TRUE)
 ```
+
+[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/htmlunit.svg?branch=master)](https://travis-ci.org/hrbrmstr/htmlunit)
+[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/htmlunit/master.svg)](https://codecov.io/github/hrbrmstr/htmlunit?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/htmlunit)](https://cran.r-project.org/package=htmlunit)
+
 # htmlunit
 
 Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library
@@ -144,3 +149,14 @@ wc %>%
   substr(1, 300) %>% 
   cat()
 ```
+
+### htmlunit Metrics
+
+```{r echo=FALSE}
+cloc::cloc_pkg_md()
+```
+
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). 
+By participating in this project you agree to abide by its terms.
