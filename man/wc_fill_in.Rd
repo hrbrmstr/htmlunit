@@ -9,7 +9,9 @@ wc_fill_in(wc_obj, value, css, xpath)
 \arguments{
 \item{wc_obj}{a \code{webclient} object}
 
-\item{css, xpath}{Node to select. Supply one of css or xpath depending on whether you want to use a css or xpath 1.0 selector.}
+\item{value}{the value to fill in}
+
+\item{css, xpath}{Node to select for filling. Supply one of css or xpath depending on whether you want to use a css or xpath 1.0 selector.}
 }
 \description{
 Fill in a input box in a form field

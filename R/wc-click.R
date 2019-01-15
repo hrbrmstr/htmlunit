@@ -5,6 +5,10 @@
 #' @param wc_obj a `webclient` object
 #' @param css,xpath Node to click on. Supply one of css or xpath depending on whether you want to use a css or xpath 1.0 selector.
 #' @export
+#' @examples
+#' w <- web_client()
+#' wc_go(w, url = "https://hrbrmstr.github.io/htmlunitjars/index.html")
+#' wc_click_on(w, "table")
 wc_click_on <- function(wc_obj, css, xpath) {
 
   pg <- wc_obj$wc$getCurrentWindow()$getEnclosedPage()

@@ -116,7 +116,8 @@ wc_title <- function(wc_obj) {
 #' @note This is an information retrieval function that does not return
 #'       the `wc_obj` so must be the last function call in a `webclient` pipe.
 #' @param wc_obj a `webclient` object
-#' @return the response headers of the web request as a data frame or `NULL` if no active page
+#' @return the response headers of the web request as a data frame or `NULL` if
+#'         no active page
 #' @export
 wc_headers <- function(wc_obj) {
 
@@ -130,7 +131,7 @@ wc_headers <- function(wc_obj) {
     rbind.data.frame,
     c(
       lapply(
-        as.list(r$getResponseHeaders()),
+        as.list(response$getResponseHeaders()),
         function(x) list(name = x$getName(), value = x$getValue())
       ),
       stringsAsFactors=FALSE

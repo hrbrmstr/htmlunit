@@ -21,3 +21,7 @@ Visit a URL
 The caller does not have to assign the output of this function to a
 variable as the browser state is managed internally by HtmlUnit.
 }
+\examples{
+w <- web_client()
+wc_go(w, "https://httpbin.org/")
+}

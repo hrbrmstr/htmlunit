@@ -11,6 +11,9 @@
 
 \item{...}{unused}
 }
+\value{
+\code{x}
+}
 \description{
 Print method for \code{webclient} objects
 }

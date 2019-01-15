@@ -2,8 +2,8 @@
 #'
 #' @note The caller does not have to assign the output of this function to a
 #'       variable as the browser state is managed internally by HtmlUnit.
-#' @param js_delay a `webclient` object
-#' @param wait number of ms to wait/block
+#' @param wc_obj a `webclient` object
+#' @param js_delay number of ms to wait/block
 #' @family wc_opts
 #' @export
 wc_wait <- function(wc_obj, js_delay = 2000L) {
@@ -87,7 +87,7 @@ wc_geo <- function(wc_obj, enable) {
 #' @note The caller does not have to assign the output of this function to a
 #'       variable as the browser state is managed internally by HtmlUnit.
 #' @param wc_obj a `webclient` object
-#' @param timneout timeout (ms); The timeout is used twice. The first is for making
+#' @param timeout timeout (ms); The timeout is used twice. The first is for making
 #'        the socket connection, the second is for data retrieval. If the
 #'        time is critical you must allow for twice the time specified here.
 #' @return the `webclient` object (invisibly)

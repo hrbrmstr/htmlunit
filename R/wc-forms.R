@@ -3,7 +3,8 @@
 #' @note The caller does not have to assign the output of this function to a
 #'       variable as the browser state is managed internally by HtmlUnit.
 #' @param wc_obj a `webclient` object
-#' @param css,xpath Node to select. Supply one of css or xpath depending on whether you want to use a css or xpath 1.0 selector.
+#' @param value the value to fill in
+#' @param css,xpath Node to select for filling. Supply one of css or xpath depending on whether you want to use a css or xpath 1.0 selector.
 #' @export
 wc_fill_in <- function(wc_obj, value, css, xpath) {
 

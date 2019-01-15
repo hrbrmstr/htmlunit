@@ -20,5 +20,5 @@
 #' @name htmlunit
 #' @docType package
 #' @author Bob Rudis (bob@@rud.is)
-#' @import rvest htmlunitjars rJava
+#' @import rvest htmlunitjars rJava xml2
 NULL

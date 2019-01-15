@@ -11,6 +11,9 @@
 #' @return `webclient` object
 #' @family dsl
 #' @export
+#' @examples
+#' w <- web_client()
+#' wc_browser_info(w)
 web_client <- function(emulate = c("best", "chrome", "firefox", "ie"),
                        proxy_host = NULL, proxy_port = NULL) {
 
@@ -61,6 +64,9 @@ webclient <- web_client
 #' @param url URL to retrieve
 #' @return the `webclient` object (invisibly)
 #' @export
+#' @examples
+#' w <- web_client()
+#' wc_go(w, "https://httpbin.org/")
 wc_go <- function(wc_obj, url) {
 
   wc_obj$wc$getPage(url)
@@ -96,12 +102,15 @@ wc_browser_info <- function(wc_obj) {
 #' @keywords internal
 #' @param x `browserinfo` object
 #' @param ... unused
+#' @return `x`
 #' @export
 print.browserinfo <- function(x, ...) {
 
   cat(
     sprintf("< %s / %s / %s >\n", x$name, x$version, x$language)
   )
+
+  invisible(x)
 
 }
 
@@ -124,6 +133,7 @@ print.browserinfo <- function(x, ...) {
 #' @keywords internal
 #' @param x `webclient` object
 #' @param ... unused
+#' @return `x`
 #' @export
 print.webclient <- function(x, ...) {
 
@@ -145,13 +155,15 @@ print.webclient <- function(x, ...) {
 
     if (pg$getTitleText() != "") cat(sprintf("      Page Title: <%s>\n", pg$getTitleText()))
 
-    r <- pg$getWebResponse()
+    res <- pg$getWebResponse()
 
-    cat(sprintf("     Status Code: %s\n", r$getStatusCode()))
-    cat(sprintf("    Content Type: %s\n", r$getContentType()))
-    cat(sprintf("  Content Length: %s bytes\n", prettyNum(r$getContentLength(), big.mark=",")))
-    cat(sprintf("       Load Time: %s ms\n", prettyNum(r$getLoadTime(), big.mark=",")))
+    cat(sprintf("     Status Code: %s\n", res$getStatusCode()))
+    cat(sprintf("    Content Type: %s\n", res$getContentType()))
+    cat(sprintf("  Content Length: %s bytes\n", prettyNum(res$getContentLength(), big.mark=",")))
+    cat(sprintf("       Load Time: %s ms\n", prettyNum(res$getLoadTime(), big.mark=",")))
 
   }
+
+  invisible(x)
 
 }

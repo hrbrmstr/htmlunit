@@ -9,7 +9,7 @@ wc_timeout(wc_obj, timeout)
 \arguments{
 \item{wc_obj}{a \code{webclient} object}
 
-\item{timneout}{timeout (ms); The timeout is used twice. The first is for making
+\item{timeout}{timeout (ms); The timeout is used twice. The first is for making
 the socket connection, the second is for data retrieval. If the
 time is critical you must allow for twice the time specified here.}
 }

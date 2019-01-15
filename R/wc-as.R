@@ -21,6 +21,12 @@
 #'         the character HTML representation of the page; if `text`
 #'         the rendered text of the document as viewed by a human.
 #' @export
+#' @examples
+#' w <- web_client()
+#' wc_go(w, url = "https://hrbrmstr.github.io/htmlunitjars/index.html")
+#' wc_render(w, "parsed")
+#' wc_render(w, "html")
+#' wc_render(w, "text")
 wc_render <- function(wc_obj, what = c("parsed", "html", "text")) {
 
   what <- match.arg(what, c("parsed", "html", "text"))

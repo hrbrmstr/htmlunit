@@ -7,9 +7,9 @@
 wc_wait(wc_obj, js_delay = 2000L)
 }
 \arguments{
-\item{js_delay}{a \code{webclient} object}
+\item{wc_obj}{a \code{webclient} object}
 
-\item{wait}{number of ms to wait/block}
+\item{js_delay}{number of ms to wait/block}
 }
 \description{
 Block HtlUnit final rendering blocks until all background JavaScript tasks have finished executing

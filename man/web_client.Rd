@@ -27,4 +27,8 @@ object will be returned.
 \details{
 This is part of the \code{htmlunit} DSL interface.s
 }
+\examples{
+w <- web_client()
+wc_browser_info(w)
+}
 \concept{dsl}

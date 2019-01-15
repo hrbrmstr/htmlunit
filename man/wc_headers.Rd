@@ -10,7 +10,8 @@ wc_headers(wc_obj)
 \item{wc_obj}{a \code{webclient} object}
 }
 \value{
-the response headers of the web request as a data frame or \code{NULL} if no active page
+the response headers of the web request as a data frame or \code{NULL} if
+no active page
 }
 \description{
 Return response headers of the last web request for current page

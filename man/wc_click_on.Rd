@@ -18,3 +18,8 @@ Click on a DOM element in a webclient loaded page
 The caller does not have to assign the output of this function to a
 variable as the browser state is managed internally by HtmlUnit.
 }
+\examples{
+w <- web_client()
+wc_go(w, url = "https://hrbrmstr.github.io/htmlunitjars/index.html")
+wc_click_on(w, "table")
+}

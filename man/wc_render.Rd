@@ -36,3 +36,10 @@ say, text mining.
 This is an information retrieval function that does not return
 the \code{wc_obj} so must be the last function call in a \code{webclient} pipe.
 }
+\examples{
+w <- web_client()
+wc_go(w, url = "https://hrbrmstr.github.io/htmlunitjars/index.html")
+wc_render(w, "parsed")
+wc_render(w, "html")
+wc_render(w, "text")
+}
