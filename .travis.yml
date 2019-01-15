@@ -13,10 +13,6 @@ matrix:
       dist: trusty
       env: R_CODECOV=true
     - os: osx
-      osx_image: xcode7.3
-      before_install:
-        - R CMD javareconf
-    - os: osx
       osx_image: xcode8.3
       before_install:
         - R CMD javareconf
