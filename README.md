@@ -147,7 +147,7 @@ All without needing a separate Selenium or Splash server instance.
 wc <- web_client()
 
 wc %>% wc_browser_info()
-## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36 / en-US >
+## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36 / en-US >
 
 wc <- web_client()
 
@@ -159,25 +159,27 @@ wc %>%
   wc_html_nodes("a") %>%
   sapply(wc_html_text, trim = TRUE) %>% 
   head(10)
-##  [1] "Skip to main content"      ""                          "1-844-USA-GOV1"            "All Topics and Services"  
-##  [5] "Benefits"                  "Help with Bills"           "Grants and Loans"          "Food Assistance"          
-##  [9] "Social Security Questions" "Affordable Rental Housing"
+##  [1] "Skip to main content"               ""                                   "1-844-USA-GOV1"                    
+##  [4] "All Topics and Services"            "Branches of the U.S. Government"    "Budget of the U.S. Government"     
+##  [7] "Data and Statistics about the U.S." "History and Historical Documents"   "American Flag"                     
+## [10] "Learn About Life in the U.S."
 
 wc %>%
   wc_html_nodes(xpath=".//a") %>%
   sapply(wc_html_text, trim = TRUE) %>% 
   head(10)
-##  [1] "Skip to main content"      ""                          "1-844-USA-GOV1"            "All Topics and Services"  
-##  [5] "Benefits"                  "Help with Bills"           "Grants and Loans"          "Food Assistance"          
-##  [9] "Social Security Questions" "Affordable Rental Housing"
+##  [1] "Skip to main content"               ""                                   "1-844-USA-GOV1"                    
+##  [4] "All Topics and Services"            "Branches of the U.S. Government"    "Budget of the U.S. Government"     
+##  [7] "Data and Statistics about the U.S." "History and Historical Documents"   "American Flag"                     
+## [10] "Learn About Life in the U.S."
 
 wc %>%
   wc_html_nodes(xpath=".//a") %>%
   sapply(wc_html_attr, "href") %>% 
   head(10)
-##  [1] "#skiptarget"            "/"                      "/phone"                 "/topics"               
-##  [5] "/benefits"              "/help-with-bills"       "/grants"                "/food-help"            
-##  [9] "/about-social-security" "/finding-home"
+##  [1] "#skiptarget"             "/"                       "/phone"                  "/topics"                
+##  [5] "/branches-of-government" "/budget"                 "/statistics"             "/history"               
+##  [9] "/flag"                   "/life-in-the-us"
 ```
 
 Handy function to get rendered plain text for text mining:
@@ -214,10 +216,13 @@ wc %>%
 ## All Topics and Services
 ## 
 ## 
+## About the U.S.
+## 
+## 
 ## Benefits, Grants, Loans
 ## 
 ## 
-## Government Agencies and Elected Offic
+## Government Agencies
 ```
 
 ### htmlunit Metrics
