@@ -36,4 +36,4 @@ Depends:
     xml2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-Remotes: https://gitlab.com/hrbrmstr/htmlunitjars.git
+Remotes: gitlab::hrbrmstr/htmlunitjars
