@@ -67,11 +67,14 @@ The following functions are implemented:
 
 - `hu_read_html`:	Read HTML from a URL with Browser Emulation & in a JavaScript Context
 
+### Content++
+
+- `wc_inspect`:  Perform a "Developer Tools"-like Network Inspection of a URL
+
 ## Installation
 
 ```{r eval=FALSE}
-devtools::install_github("hrbrmstr/htmlunitjars")
-devtools::install_github("hrbrmstr/htmlunit")
+install.packages(c("htmlunitjars", "htmlunit"), repos = "https://cinc.rud.is", type="source")
 ```
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
@@ -82,6 +85,7 @@ options(width=120)
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 library(htmlunit)
+library(tidyverse) # for some data ops; not req'd for pkg
 
 # current verison
 packageVersion("htmlunit")
@@ -111,6 +115,20 @@ html_table(pg)
 ```
 
 All without needing a separate Selenium or Splash server instance.
+
+### Content++
+
+We can also get a HAR-like content + metadata dump:
+
+```{r}
+(xdf <- wc_inspect("https://rud.is/b"))
+
+group_by(xdf, content_type) %>% 
+  summarise(
+    total_size = sum(content_length), 
+    total_load_time = sum(load_time)/1000
+  )
+```
 
 ### DSL
 

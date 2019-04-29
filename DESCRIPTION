@@ -1,8 +1,8 @@
 Package: htmlunit
 Type: Package
 Title: Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library
-Version: 0.1.0
-Date: 2018-12-16
+Version: 0.2.0
+Date: 2019-04-29
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640")),
@@ -36,4 +36,4 @@ Depends:
     xml2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-Remotes: hrbrmstr/htmlunitjars
+Remotes: https://gitlab.com/hrbrmstr/htmlunitjars.git

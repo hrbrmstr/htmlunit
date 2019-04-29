@@ -11,4 +11,5 @@
 ^doc$
 ^tmp$
 ^notes$
+^java$
 ^\.gitlab-ci\.yml$

@@ -93,21 +93,27 @@ The following functions are implemented:
   - `hu_read_html`: Read HTML from a URL with Browser Emulation & in a
     JavaScript Context
 
+### Content++
+
+  - `wc_inspect`: Perform a “Developer Tools”-like Network Inspection of
+    a
+URL
+
 ## Installation
 
 ``` r
-devtools::install_github("hrbrmstr/htmlunitjars")
-devtools::install_github("hrbrmstr/htmlunit")
+install.packages(c("htmlunitjars", "htmlunit"), repos = "https://cinc.rud.is", type="source")
 ```
 
 ## Usage
 
 ``` r
 library(htmlunit)
+library(tidyverse) # for some data ops; not req'd for pkg
 
 # current verison
 packageVersion("htmlunit")
-## [1] '0.1.0'
+## [1] '0.2.0'
 ```
 
 Something `xml2::read_html()` cannot do, read the table from
@@ -141,13 +147,49 @@ html_table(pg)
 
 All without needing a separate Selenium or Splash server instance.
 
+### Content++
+
+We can also get a HAR-like content + metadata dump:
+
+``` r
+(xdf <- wc_inspect("https://rud.is/b"))
+## # A tibble: 55 x 9
+##    method url                status_code message   content               content_length content_type  load_time headers 
+##    <chr>  <chr>                    <int> <chr>     <chr>                          <dbl> <chr>             <dbl> <I(list>
+##  1 GET    https://rud.is/b           301 Moved Pe… "<html>\r\n<head><ti…            162 text/html           113 <tibble…
+##  2 GET    https://rud.is/b/          200 OK        "<!-- This page is c…          10974 text/html            29 <tibble…
+##  3 GET    https://rud.is/b/…         200 OK        "// Source: wp-inclu…           4426 application/…        29 <tibble…
+##  4 GET    https://rud.is/b/…         200 OK        ".wp-block-audio fig…           4320 text/css             21 <tibble…
+##  5 GET    https://rud.is/b/…         200 OK        "/* http://prismjs.c…           1601 text/css             19 <tibble…
+##  6 GET    https://rud.is/b/…         200 OK        ".wp_syntax {\n\tcol…            820 text/css             18 <tibble…
+##  7 GET    https://rud.is/b/…         200 OK        "@media print{body{b…            338 text/css             18 <tibble…
+##  8 GET    https://rud.is/b/…         200 OK        ".row-fluid{width:10…           2491 text/css             19 <tibble…
+##  9 GET    https://rud.is/b/…         200 OK        "/*! normalize.css v…            850 text/css             21 <tibble…
+## 10 GET    https://rud.is/b/…         200 OK        "@font-face{font-fam…           1965 text/css             20 <tibble…
+## # … with 45 more rows
+
+group_by(xdf, content_type) %>% 
+  summarise(
+    total_size = sum(content_length), 
+    total_load_time = sum(load_time)/1000
+  )
+## # A tibble: 5 x 3
+##   content_type             total_size total_load_time
+##   <chr>                         <dbl>           <dbl>
+## 1 application/javascript       146930           0.965
+## 2 application/x-javascript       9959           0.226
+## 3 image/webp                    33686           0.225
+## 4 text/css                      43913           0.348
+## 5 text/html                     11136           0.142
+```
+
 ### DSL
 
 ``` r
 wc <- web_client()
 
 wc %>% wc_browser_info()
-## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36 / en-US >
+## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36 / en-US >
 
 wc <- web_client()
 
@@ -177,7 +219,7 @@ wc %>%
   wc_html_nodes(xpath=".//a") %>%
   sapply(wc_html_attr, "href") %>% 
   head(10)
-##  [1] "#skiptarget"             "/"                       "/phone"                  "/topics"                
+##  [1] "#skiptarget"             "/"                       "/phone"                  "/#tpcs"                 
 ##  [5] "/branches-of-government" "/budget"                 "/statistics"             "/history"               
 ##  [9] "/flag"                   "/life-in-the-us"
 ```
@@ -227,10 +269,13 @@ wc %>%
 
 ### htmlunit Metrics
 
-| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
-| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |       12 | 0.92 | 314 | 0.91 |         182 | 0.79 |      364 | 0.82 |
-| Rmd  |        1 | 0.08 |  32 | 0.09 |          49 | 0.21 |       81 | 0.18 |
+| Lang  | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
+| :---- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
+| R     |       14 | 0.78 | 351 | 0.77 |         193 | 0.73 |      372 | 0.81 |
+| Rmd   |        1 | 0.06 |  38 | 0.08 |          55 | 0.21 |       87 | 0.19 |
+| Maven |        1 | 0.06 |  30 | 0.07 |           0 | 0.00 |        1 | 0.00 |
+| Java  |        1 | 0.06 |  28 | 0.06 |          11 | 0.04 |        1 | 0.00 |
+| make  |        1 | 0.06 |  10 | 0.02 |           4 | 0.02 |        0 | 0.00 |
 
 ## Code of Conduct
 
