@@ -1,32 +1,21 @@
 ---
-output: rmarkdown::github_document
+output: 
+  rmarkdown::github_document:
+    df_print: kable
+editor_options: 
+  chunk_output_type: console
 ---
-```{r include=FALSE}
-knitr::opts_chunk$set(message=FALSE, warning=FALSE, collapse=TRUE)
+```{r pkg-knitr-opts, include=FALSE}
+hrbrpkghelpr::global_opts()
 ```
 
-[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/htmlunit.svg?branch=master)](https://travis-ci.org/hrbrmstr/htmlunit)
-[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/htmlunit/master.svg)](https://codecov.io/github/hrbrmstr/htmlunit?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/htmlunit)](https://cran.r-project.org/package=htmlunit)
+```{r badges, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::stinking_badges()
+```
 
-# htmlunit
-
-Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library
-
-## Description
-
-`HtmlUnit` (<http://htmlunit.sourceforge.net/>) is _a "'GUI'-Less 
-browser for 'Java' programs". It models 'HTML' documents and provides an 'API' 
-that allows one to invoke pages, fill out forms, click links and more just like 
-one does in a "normal" browser. The library has fairly good and constantly
-improving 'JavaScript' support and is able to work even with quite complex 'AJAX' 
-libraries, simulating 'Chrome', 'Firefox' or 'Internet Explorer' depending on
-the configuration used. It is typically used for testing purposes or to retrieve 
-information from web sites._
-
-Tools are provided to work with this library at a higher level than provided by
-the exposed 'Java' libraries in the [`htmlunitjars`](https://gitlab.com/hrbrmstr/htmlunitjars)
-package.
+```{r description, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::yank_title_and_description()
+```
 
 ## What's Inside The Tin
 
@@ -73,17 +62,13 @@ The following functions are implemented:
 
 ## Installation
 
-```{r eval=FALSE}
-install.packages(c("htmlunitjars", "htmlunit"), repos = "https://cinc.rud.is", type="source")
-```
-
-```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
-options(width=120)
+```{r install-ex, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::install_block()
 ```
 
 ## Usage
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r cache=FALSE}
 library(htmlunit)
 library(tidyverse) # for some data ops; not req'd for pkg
 
@@ -96,7 +81,7 @@ Something `xml2::read_html()` cannot do, read the table from <https://hrbrmstr.g
 
 ![](man/figures/test-url-table.png)
 
-```{r}
+```{r ex1}
 test_url <- "https://hrbrmstr.github.io/htmlunitjars/index.html"
 
 pg <- xml2::read_html(test_url)
@@ -108,7 +93,7 @@ html_table(pg)
 
 But, `hu_read_html()` can!
 
-```{r}
+```{r ex2}
 pg <- hu_read_html(test_url)
 
 html_table(pg)
@@ -120,8 +105,12 @@ All without needing a separate Selenium or Splash server instance.
 
 We can also get a HAR-like content + metadata dump:
 
-```{r}
-(xdf <- wc_inspect("https://rud.is/b"))
+```{r ex3}
+xdf <- wc_inspect("https://rstudio.com")
+
+colnames(xdf)
+
+select(xdf, method, url, status_code, content_length, load_time)
 
 group_by(xdf, content_type) %>% 
   summarise(
@@ -132,8 +121,8 @@ group_by(xdf, content_type) %>%
 
 ### DSL
 
-```{r}
-wc <- web_client()
+```{r ex4}
+wc <- web_client(emulate = "chrome")
 
 wc %>% wc_browser_info()
 
@@ -161,7 +150,7 @@ wc %>%
 
 Handy function to get rendered plain text for text mining:
 
-```{r}
+```{r ex5}
 wc %>% 
   wc_render("text") %>% 
   substr(1, 300) %>% 
@@ -176,5 +165,5 @@ cloc::cloc_pkg_md()
 
 ## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). 
+Please note that this project is released with a Contributor Code of Conduct.
 By participating in this project you agree to abide by its terms.

@@ -1,15 +1,15 @@
 Package: htmlunit
 Type: Package
 Title: Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library
-Version: 0.2.0
-Date: 2019-04-29
+Version: 0.3.0
+Date: 2019-08-24
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640")),
     person("Everet", "Rummel", email = "everet.rummel@gmail.com", role = "ctb")
   )
 Maintainer: Bob Rudis <bob@rud.is>
-Description: 'HtmlUnit' (<http://htmlunit.sourceforge.net/>) is a "'GUI'-Less 
+Description: 'HtmlUnit' (<https://htmlunit.sourceforge.net/>) is a "'GUI'-Less 
     browser for 'Java' programs". It models 'HTML' documents and provides an 'API' 
     that allows one to invoke pages, fill out forms, click links and more just like 
     one does in a "normal" browser. The library has fairly good and constantly

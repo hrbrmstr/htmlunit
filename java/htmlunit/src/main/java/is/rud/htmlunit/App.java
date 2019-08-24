@@ -24,7 +24,6 @@ public static List<WebResponse> getRequestsFor(String url, long jsDelay) throws 
     @Override
     public WebResponse getResponse(final WebRequest request) throws IOException {
       final WebResponse response = super.getResponse(request);
-//      list.add(request.getHttpMethod() + " " + request.getUrl());
       list.add(response);
       return response;
     }
