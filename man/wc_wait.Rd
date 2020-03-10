@@ -19,9 +19,13 @@ The caller does not have to assign the output of this function to a
 variable as the browser state is managed internally by HtmlUnit.
 }
 \seealso{
-Other wc_opts: \code{\link{wc_css}}, \code{\link{wc_dnt}},
-  \code{\link{wc_geo}}, \code{\link{wc_img_dl}},
-  \code{\link{wc_resize}}, \code{\link{wc_timeout}},
-  \code{\link{wc_use_insecure_ssl}}
+Other wc_opts: 
+\code{\link{wc_css}()},
+\code{\link{wc_dnt}()},
+\code{\link{wc_geo}()},
+\code{\link{wc_img_dl}()},
+\code{\link{wc_resize}()},
+\code{\link{wc_timeout}()},
+\code{\link{wc_use_insecure_ssl}()}
 }
 \concept{wc_opts}

@@ -4,11 +4,17 @@
 \alias{hu_read_html}
 \title{Read HTML from a URL with Browser Emulation & in a JavaScript Context}
 \usage{
-hu_read_html(url, emulate = c("best", "chrome", "firefox", "ie"),
-  ret = c("html_document", "text"), js_delay = 2000L,
-  timeout = 30000L, ignore_ssl_errors = TRUE, enable_dnt = FALSE,
-  download_images = FALSE, options = c("RECOVER", "NOERROR",
-  "NOBLANKS"))
+hu_read_html(
+  url,
+  emulate = c("best", "chrome", "firefox", "ie"),
+  ret = c("html_document", "text"),
+  js_delay = 2000L,
+  timeout = 30000L,
+  ignore_ssl_errors = TRUE,
+  enable_dnt = FALSE,
+  download_images = FALSE,
+  options = c("RECOVER", "NOERROR", "NOBLANKS")
+)
 }
 \arguments{
 \item{url}{URL to retrieve}

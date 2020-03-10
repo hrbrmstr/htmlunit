@@ -132,7 +132,7 @@ library(tidyverse) # for some data ops; not req'd for pkg
 
 # current verison
 packageVersion("htmlunit")
-## [1] '0.3.0'
+## [1] '0.3.1'
 ```
 
 Something `xml2::read_html()` cannot do, read the table from
@@ -178,37 +178,41 @@ colnames(xdf)
 ## [7] "content_type"   "load_time"      "headers"
 
 select(xdf, method, url, status_code, content_length, load_time)
-## # A tibble: 168 x 5
+## # A tibble: 46 x 5
 ##    method url                                                                       status_code content_length load_time
 ##    <chr>  <chr>                                                                           <int>          <dbl>     <dbl>
-##  1 GET    https://rstudio.com/                                                              302            154       278
-##  2 GET    https://www.rstudio.com/                                                          200         125451       281
-##  3 GET    https://www.rstudio.com/wp-includes/js/wp-emoji-release.min.js?ver=5.1.1          200           4426        47
-##  4 GET    https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/plug…         200           4193       147
-##  5 GET    https://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7CO…         200            820       151
-##  6 GET    https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/plug…         200           1306        24
-##  7 GET    https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/plug…         200           7102        26
-##  8 GET    https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/plug…         200           9680        23
-##  9 GET    https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/plug…         200           1001        20
-## 10 GET    https://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/plug…         200            271        21
-## # … with 158 more rows
+##  1 GET    https://rstudio.com/                                                              200          12225       468
+##  2 GET    https://dev.visualwebsiteoptimizer.com/j.php?a=450622&u=https%3A%2F%2Frs…         200           1254       263
+##  3 GET    https://dev.visualwebsiteoptimizer.com/6.0/va-41bacd491c20ae77339f81a709…         200          55687        68
+##  4 GET    https://use.fontawesome.com/releases/v5.0.6/css/all.css                           200           8699       170
+##  5 GET    https://d33wubrfki0l68.cloudfront.net/bundles/c5ddb3e999592179708beea702…         200          53046       153
+##  6 GET    https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight…         200            763       172
+##  7 GET    https://d33wubrfki0l68.cloudfront.net/css/4a0f49009a213e6e2207c6f66893f0…         200            505        15
+##  8 GET    https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min…         200            548       211
+##  9 GET    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-aweso…         200           6663       127
+## 10 GET    https://snap.licdn.com/li.lms-analytics/insight.min.js                            200           1576       136
+## # … with 36 more rows
 
 group_by(xdf, content_type) %>% 
   summarise(
     total_size = sum(content_length), 
     total_load_time = sum(load_time)/1000
   )
-## # A tibble: 8 x 3
-##   content_type           total_size total_load_time
-##   <chr>                       <dbl>           <dbl>
-## 1 application/javascript     673583           3.79 
-## 2 application/json             4147           0.914
-## 3 image/gif                      70           0.202
-## 4 image/jpeg                  59772           0.022
-## 5 image/png                  577497           0.423
-## 6 text/css                   131846           0.773
-## 7 text/html                  126021           0.592
-## 8 text/javascript            191565           0.492
+## # A tibble: 12 x 3
+##    content_type               total_size total_load_time
+##    <chr>                           <dbl>           <dbl>
+##  1 ""                              44288           0.185
+##  2 "application/javascript"       262203           0.724
+##  3 "application/json"               4100           0.848
+##  4 "application/x-javascript"     152398           0.521
+##  5 "image/gif"                        35           0.209
+##  6 "image/jpeg"                    59772           0.026
+##  7 "image/png"                     40634           0.064
+##  8 "image/svg+xml"                 41727           0.141
+##  9 "text/css"                     118100           1.08 
+## 10 "text/html"                     12642           0.518
+## 11 "text/javascript"              249525           0.926
+## 12 "text/plain"                       28           0.183
 ```
 
 ### DSL
@@ -217,7 +221,7 @@ group_by(xdf, content_type) %>%
 wc <- web_client(emulate = "chrome")
 
 wc %>% wc_browser_info()
-## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36 / en-US >
+## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36 / en-US >
 
 wc <- web_client()
 
@@ -261,38 +265,17 @@ wc %>%
   cat()
 ## USA.gov: The U.S. Government's Official Web Portal | USAGov
 ## Skip to main content
-## 
-## 
 ## An official website of the United States government Here's how you know
 ## 
 ## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
 ## Search
-##  Search
-## 
-## 
 ## Search
-##  1-844-USA-GOV1
-## 
-## 
-## 
+## Search
+## 1-844-USA-GOV1
 ## All Topics and Services
-## 
-## 
-## About the U.S.
-## 
-## 
 ## Benefits, Grants, Loans
-## 
-## 
-## Government Agencies and
+## Government Agencies and Elected Officials
+## Jobs and Unemployme
 ```
 
 ### htmlunit Metrics
@@ -301,9 +284,9 @@ wc %>%
 | :---- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
 | R     |       14 | 0.78 | 351 | 0.76 |         193 | 0.74 |      372 | 0.83 |
 | Rmd   |        1 | 0.06 |  41 | 0.09 |          52 | 0.20 |       75 | 0.17 |
-| Maven |        1 | 0.06 |  30 | 0.06 |           0 | 0.00 |        1 | 0.00 |
-| Java  |        1 | 0.06 |  28 | 0.06 |          11 | 0.04 |        0 | 0.00 |
-| make  |        1 | 0.06 |  14 | 0.03 |           4 | 0.02 |        0 | 0.00 |
+| Maven |        1 | 0.06 |  30 | 0.07 |           0 | 0.00 |        1 | 0.00 |
+| Java  |        1 | 0.06 |  28 | 0.06 |          12 | 0.05 |        0 | 0.00 |
+| make  |        1 | 0.06 |  10 | 0.02 |           4 | 0.02 |        0 | 0.00 |
 
 ## Code of Conduct
 

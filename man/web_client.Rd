@@ -5,11 +5,17 @@
 \alias{webclient}
 \title{Create a new HtmlUnit WebClient instance}
 \usage{
-web_client(emulate = c("best", "chrome", "firefox", "ie"),
-  proxy_host = NULL, proxy_port = NULL)
+web_client(
+  emulate = c("best", "chrome", "firefox", "ie"),
+  proxy_host = NULL,
+  proxy_port = NULL
+)
 
-webclient(emulate = c("best", "chrome", "firefox", "ie"),
-  proxy_host = NULL, proxy_port = NULL)
+webclient(
+  emulate = c("best", "chrome", "firefox", "ie"),
+  proxy_host = NULL,
+  proxy_port = NULL
+)
 }
 \arguments{
 \item{emulate}{browser to emulate; one of "\code{best}", "\code{chrome}", "\code{firefox}", "\code{ie}"}

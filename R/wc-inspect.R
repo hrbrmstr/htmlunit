@@ -8,7 +8,7 @@
 #' @export
 wc_inspect <- function(url, js_delay = 5000L) {
 
-  app <- J("is.rud.htmlunit.App")
+  app <- J("is.rud.htmlunit.Zapp")
 
   res <- app$getRequestsFor(url, .jlong(js_delay))
   res <- as.list(res)

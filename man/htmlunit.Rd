@@ -3,7 +3,6 @@
 \docType{package}
 \name{htmlunit}
 \alias{htmlunit}
-\alias{htmlunit-package}
 \title{Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library}
 \description{
 \code{HtmlUnit} (\url{http://htmlunit.sourceforge.net/}) is \emph{a "'GUI'-Less
@@ -17,7 +16,7 @@ information from web sites.}
 }
 \details{
 Tools are provided to work with this library at a higher level than provided by
-the exposed 'Java' libraries in the \href{https://gitlab.com/hrbrmstr/htmlunitjars}{htmlunitjars}
+the exposed 'Java' libraries in the \href{https://gitlab.com/hrbrmstr/htmlunitjars}{\code{htmlunitjars}}
 package.
 \itemize{
 \item URL: \url{https://gitlab.com/hrbrmstr/htmlunit}

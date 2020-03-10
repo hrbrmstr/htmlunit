@@ -1,8 +1,8 @@
 Package: htmlunit
 Type: Package
 Title: Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library
-Version: 0.3.0
-Date: 2019-08-24
+Version: 0.3.1
+Date: 2020-03-10
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640")),
@@ -19,8 +19,8 @@ Description: 'HtmlUnit' (<https://htmlunit.sourceforge.net/>) is a "'GUI'-Less
     information from web sites. Tools are provided to work with this library
     at a higher level than provided by the exposed 'Java' libraries in the 
     'htmlunitjars' package.
-URL: https://gitlab.com/hrbrmstr/htmlunit
-BugReports: https://gitlab.com/hrbrmstr/htmlunit/issues
+URL: https://git.rud.is/hrbrmstr/htmlunit
+BugReports: https://git.rud.is/hrbrmstr/htmlunit/issues
 Encoding: UTF-8
 License: Apache License 2.0 | file LICENSE
 Imports: 
@@ -35,5 +35,5 @@ Depends:
     rvest,
     xml2
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Remotes: gitlab::hrbrmstr/htmlunitjars
