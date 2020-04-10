@@ -108,7 +108,7 @@ The following functions are implemented:
 ## Installation
 
 ``` r
-install.packages("htmlunit", repos = "https://cinc.rud.is")
+install.packages("htmlunit", repos = c("https://cinc.rud.is", "https://cloud.r-project.org/"))
 # or
 remotes::install_git("https://git.rud.is/hrbrmstr/htmlunit.git")
 # or
@@ -132,7 +132,7 @@ library(tidyverse) # for some data ops; not req'd for pkg
 
 # current verison
 packageVersion("htmlunit")
-## [1] '0.3.1'
+## [1] '0.3.2'
 ```
 
 Something `xml2::read_html()` cannot do, read the table from
@@ -178,20 +178,20 @@ colnames(xdf)
 ## [7] "content_type"   "load_time"      "headers"
 
 select(xdf, method, url, status_code, content_length, load_time)
-## # A tibble: 46 x 5
+## # A tibble: 45 x 5
 ##    method url                                                                       status_code content_length load_time
 ##    <chr>  <chr>                                                                           <int>          <dbl>     <dbl>
-##  1 GET    https://rstudio.com/                                                              200          12225       468
-##  2 GET    https://dev.visualwebsiteoptimizer.com/j.php?a=450622&u=https%3A%2F%2Frs…         200           1254       263
-##  3 GET    https://dev.visualwebsiteoptimizer.com/6.0/va-41bacd491c20ae77339f81a709…         200          55687        68
-##  4 GET    https://use.fontawesome.com/releases/v5.0.6/css/all.css                           200           8699       170
-##  5 GET    https://d33wubrfki0l68.cloudfront.net/bundles/c5ddb3e999592179708beea702…         200          53046       153
-##  6 GET    https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight…         200            763       172
-##  7 GET    https://d33wubrfki0l68.cloudfront.net/css/4a0f49009a213e6e2207c6f66893f0…         200            505        15
-##  8 GET    https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min…         200            548       211
-##  9 GET    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-aweso…         200           6663       127
-## 10 GET    https://snap.licdn.com/li.lms-analytics/insight.min.js                            200           1576       136
-## # … with 36 more rows
+##  1 GET    https://rstudio.com/                                                              200          12292       701
+##  2 GET    https://dev.visualwebsiteoptimizer.com/j.php?a=450622&u=https%3A%2F%2Frs…         200           2498       349
+##  3 GET    https://dev.visualwebsiteoptimizer.com/6.0/va-268e5d055e3477f16578a91cda…         200          55711        91
+##  4 GET    https://use.fontawesome.com/releases/v5.0.6/css/all.css                           200           8699       427
+##  5 GET    https://d33wubrfki0l68.cloudfront.net/bundles/c5ddb3e999592179708beea702…         200          53046       599
+##  6 GET    https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight…         200            763       402
+##  7 GET    https://d33wubrfki0l68.cloudfront.net/css/4a0f49009a213e6e2207c6f66893f0…         200            505        80
+##  8 GET    https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min…         200            548       346
+##  9 GET    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-aweso…         200           6663       292
+## 10 GET    https://snap.licdn.com/li.lms-analytics/insight.min.js                            200           1576       483
+## # … with 35 more rows
 
 group_by(xdf, content_type) %>% 
   summarise(
@@ -201,18 +201,18 @@ group_by(xdf, content_type) %>%
 ## # A tibble: 12 x 3
 ##    content_type               total_size total_load_time
 ##    <chr>                           <dbl>           <dbl>
-##  1 ""                              44288           0.185
-##  2 "application/javascript"       262203           0.724
-##  3 "application/json"               4100           0.848
-##  4 "application/x-javascript"     152398           0.521
-##  5 "image/gif"                        35           0.209
-##  6 "image/jpeg"                    59772           0.026
-##  7 "image/png"                     40634           0.064
-##  8 "image/svg+xml"                 41727           0.141
-##  9 "text/css"                     118100           1.08 
-## 10 "text/html"                     12642           0.518
-## 11 "text/javascript"              249525           0.926
-## 12 "text/plain"                       28           0.183
+##  1 ""                              45565           0.521
+##  2 "application/javascript"       265147           1.78 
+##  3 "application/json"               4100           0.687
+##  4 "application/x-javascript"     152398           1.97 
+##  5 "image/gif"                        35           0.557
+##  6 "image/jpeg"                    59772           0.114
+##  7 "image/png"                     40634           0.269
+##  8 "image/svg+xml"                 10869           0.314
+##  9 "text/css"                     118095           2.81 
+## 10 "text/html"                     12709           0.798
+## 11 "text/javascript"              249573           2.02 
+## 12 "text/plain"                       28           0.344
 ```
 
 ### DSL
