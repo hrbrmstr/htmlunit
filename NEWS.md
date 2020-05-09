@@ -1,3 +1,7 @@
+0.4.0
+* Switched to {tinytest}
+* Updated for 2.40.0 jars
+
 0.3.0
 * java 11 compile
 * tested against new htmlunit jar release

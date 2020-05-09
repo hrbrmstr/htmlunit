@@ -132,7 +132,7 @@ library(tidyverse) # for some data ops; not req'd for pkg
 
 # current verison
 packageVersion("htmlunit")
-## [1] '0.3.2'
+## [1] '0.4.0'
 ```
 
 Something `xml2::read_html()` cannot do, read the table from
@@ -178,20 +178,20 @@ colnames(xdf)
 ## [7] "content_type"   "load_time"      "headers"
 
 select(xdf, method, url, status_code, content_length, load_time)
-## # A tibble: 45 x 5
+## # A tibble: 59 x 5
 ##    method url                                                                       status_code content_length load_time
 ##    <chr>  <chr>                                                                           <int>          <dbl>     <dbl>
-##  1 GET    https://rstudio.com/                                                              200          12292       701
-##  2 GET    https://dev.visualwebsiteoptimizer.com/j.php?a=450622&u=https%3A%2F%2Frs…         200           2498       349
-##  3 GET    https://dev.visualwebsiteoptimizer.com/6.0/va-268e5d055e3477f16578a91cda…         200          55711        91
-##  4 GET    https://use.fontawesome.com/releases/v5.0.6/css/all.css                           200           8699       427
-##  5 GET    https://d33wubrfki0l68.cloudfront.net/bundles/c5ddb3e999592179708beea702…         200          53046       599
-##  6 GET    https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight…         200            763       402
-##  7 GET    https://d33wubrfki0l68.cloudfront.net/css/4a0f49009a213e6e2207c6f66893f0…         200            505        80
-##  8 GET    https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min…         200            548       346
-##  9 GET    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-aweso…         200           6663       292
-## 10 GET    https://snap.licdn.com/li.lms-analytics/insight.min.js                            200           1576       483
-## # … with 35 more rows
+##  1 GET    https://rstudio.com/                                                              200          13531       625
+##  2 GET    https://use.fontawesome.com/releases/v5.0.6/css/all.css                           200           8699       376
+##  3 GET    https://d33wubrfki0l68.cloudfront.net/bundles/c5ddb3e999592179708beea702…         200          53046       563
+##  4 GET    https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight…         200            763       376
+##  5 GET    https://d33wubrfki0l68.cloudfront.net/css/4a0f49009a213e6e2207c6f66893f0…         200            505        73
+##  6 GET    https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min…         200            548       258
+##  7 GET    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-aweso…         200           6663       247
+##  8 GET    https://metadata-static-files.sfo2.cdn.digitaloceanspaces.com/pixel/lp.js         200           3876       364
+##  9 GET    https://snap.licdn.com/li.lms-analytics/insight.min.js                            200           1576       455
+## 10 GET    https://connect.facebook.net/en_US/fbevents.js                                    200          31766       412
+## # … with 49 more rows
 
 group_by(xdf, content_type) %>% 
   summarise(
@@ -201,18 +201,18 @@ group_by(xdf, content_type) %>%
 ## # A tibble: 12 x 3
 ##    content_type               total_size total_load_time
 ##    <chr>                           <dbl>           <dbl>
-##  1 ""                              45565           0.521
-##  2 "application/javascript"       265147           1.78 
-##  3 "application/json"               4100           0.687
-##  4 "application/x-javascript"     152398           1.97 
-##  5 "image/gif"                        35           0.557
-##  6 "image/jpeg"                    59772           0.114
-##  7 "image/png"                     40634           0.269
-##  8 "image/svg+xml"                 10869           0.314
-##  9 "text/css"                     118095           2.81 
-## 10 "text/html"                     12709           0.798
-## 11 "text/javascript"              249573           2.02 
-## 12 "text/plain"                       28           0.344
+##  1 ""                                  0           1.02 
+##  2 "application/javascript"       443531           3.61 
+##  3 "application/json"               4176           3.10 
+##  4 "application/x-javascript"     161004           1.69 
+##  5 "image/gif"                       131           0.561
+##  6 "image/jpeg"                    59772           0.105
+##  7 "image/png"                     40634           0.234
+##  8 "image/svg+xml"                 10869           0.303
+##  9 "text/css"                     121175           2.81 
+## 10 "text/html"                     14425           1.3  
+## 11 "text/javascript"              174172           1.42 
+## 12 "text/plain"                       28           0.354
 ```
 
 ### DSL
@@ -221,7 +221,7 @@ group_by(xdf, content_type) %>%
 wc <- web_client(emulate = "chrome")
 
 wc %>% wc_browser_info()
-## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36 / en-US >
+## < Netscape / 5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36 / en-US >
 
 wc <- web_client()
 
@@ -263,7 +263,7 @@ wc %>%
   wc_render("text") %>% 
   substr(1, 300) %>% 
   cat()
-## USA.gov: The U.S. Government's Official Web Portal | USAGov
+## Official Guide to Government Information and Services | USAGov
 ## Skip to main content
 ## An official website of the United States government Here's how you know
 ## 
@@ -275,17 +275,17 @@ wc %>%
 ## All Topics and Services
 ## Benefits, Grants, Loans
 ## Government Agencies and Elected Officials
-## Jobs and Unemployme
+## Jobs and Unemplo
 ```
 
 ### htmlunit Metrics
 
 | Lang  | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :---- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R     |       14 | 0.78 | 351 | 0.76 |         193 | 0.74 |      372 | 0.83 |
-| Rmd   |        1 | 0.06 |  41 | 0.09 |          52 | 0.20 |       75 | 0.17 |
+| R     |       13 | 0.76 | 320 | 0.75 |         182 | 0.73 |      372 | 0.83 |
+| Rmd   |        1 | 0.06 |  41 | 0.10 |          52 | 0.21 |       75 | 0.17 |
 | Maven |        1 | 0.06 |  30 | 0.07 |           0 | 0.00 |        1 | 0.00 |
-| Java  |        1 | 0.06 |  28 | 0.06 |          12 | 0.05 |        0 | 0.00 |
+| Java  |        1 | 0.06 |  28 | 0.07 |          12 | 0.05 |        0 | 0.00 |
 | make  |        1 | 0.06 |  10 | 0.02 |           4 | 0.02 |        0 | 0.00 |
 
 ## Code of Conduct
