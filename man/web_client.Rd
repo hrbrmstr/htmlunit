@@ -6,13 +6,13 @@
 \title{Create a new HtmlUnit WebClient instance}
 \usage{
 web_client(
-  emulate = c("best", "chrome", "firefox", "ie"),
+  emulate = c("best", "chrome", "firefox", "ie", "edge"),
   proxy_host = NULL,
   proxy_port = NULL
 )
 
 webclient(
-  emulate = c("best", "chrome", "firefox", "ie"),
+  emulate = c("best", "chrome", "firefox", "ie", "edge"),
   proxy_host = NULL,
   proxy_port = NULL
 )

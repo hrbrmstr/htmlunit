@@ -45,7 +45,7 @@
 #' hu_read_html(test_url)
 #' }
 hu_read_html <- function(url,
-                         emulate = c("best", "chrome", "firefox", "ie"),
+                         emulate = c("best", "chrome", "firefox", "ie", "edge"),
                          ret = c("html_document", "text"),
                          js_delay = 2000L,
                          timeout = 30000L,
@@ -54,7 +54,7 @@ hu_read_html <- function(url,
                          download_images = FALSE,
                          options = c("RECOVER", "NOERROR", "NOBLANKS")) {
 
-  emulate <- match.arg(emulate, c("best", "chrome", "firefox", "ie"))
+  emulate <- match.arg(emulate, c("best", "chrome", "firefox", "ie", "edge"))
   ret <- match.arg(ret, c("html_document", "text"))
 
   available_browsers <- J("com.gargoylesoftware.htmlunit.BrowserVersion")
@@ -63,11 +63,18 @@ hu_read_html <- function(url,
     emulate,
     best = available_browsers$BEST_SUPPORTED,
     chrome = available_browsers$CHROME,
-    firefox = available_browsers$FIREFOX_60,
+    firefox = available_browsers$FIREFOX,
+    edge = available_browsers$EDGE,
     ie = available_browsers$INTERNET_EXPLORER
   ) -> use_browser
 
   wc <- new(J("com.gargoylesoftware.htmlunit.WebClient"), use_browser)
+
+  cssErrorHandler <- .jnew("is.rud.htmlunit.RDefaultCssErrorHandler")
+  wc$setCssErrorHandler(cssErrorHandler)
+
+  incorrectListenerHandler <- .jnew("is.rud.htmlunit.RIncorrectnessListener")
+  wc$setIncorrectnessListener(incorrectListenerHandler)
 
   res <- wc$waitForBackgroundJavaScriptStartingBefore(.jlong(as.integer(js_delay)))
 

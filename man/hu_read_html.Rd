@@ -6,7 +6,7 @@
 \usage{
 hu_read_html(
   url,
-  emulate = c("best", "chrome", "firefox", "ie"),
+  emulate = c("best", "chrome", "firefox", "ie", "edge"),
   ret = c("html_document", "text"),
   js_delay = 2000L,
   timeout = 30000L,

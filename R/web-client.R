@@ -14,17 +14,18 @@
 #' @examples
 #' w <- web_client()
 #' wc_browser_info(w)
-web_client <- function(emulate = c("best", "chrome", "firefox", "ie"),
+web_client <- function(emulate = c("best", "chrome", "firefox", "ie", "edge"),
                        proxy_host = NULL, proxy_port = NULL) {
 
-  emulate <- match.arg(emulate, c("best", "chrome", "firefox", "ie"))
+  emulate <- match.arg(emulate, c("best", "chrome", "firefox", "ie", "edge"))
   available_browsers <- J("com.gargoylesoftware.htmlunit.BrowserVersion")
 
   switch(
     emulate,
     best = available_browsers$BEST_SUPPORTED,
     chrome = available_browsers$CHROME,
-    firefox = available_browsers$FIREFOX_60,
+    firefox = available_browsers$FIREFOX,
+    edge = available_browsers$EDGE,
     ie = available_browsers$INTERNET_EXPLORER
   ) -> use_browser
 
