@@ -22,7 +22,7 @@ hu_read_html(
 \item{emulate}{browser to emulate; one of "\code{best}", "\code{chrome}", "\code{firefox}", "\code{ie}"}
 
 \item{ret}{what to return; if \code{html_document} (the default) then the HTML created
-by the \code{HtmlUnit} emulated browser context is passed to \code{\link[xml2:read_html]{xml2::read_html()}}
+by the \code{HtmlUnit} emulated browser context is passed to \code{\link[xml2:read_xml]{xml2::read_html()}}
 and an \code{xml2} \code{html_document}/\code{xml_document} is returned. Note that this causes
 further HTML processing by \code{xml2}/\code{libxml2} so is not \emph{exactly} what
 \code{HtmlUnit} generated. If you want the HTML code (text) without any further
@@ -47,7 +47,7 @@ function is a high-level wrapper designed to do a read of HTML,
 it is recommended that you leave this the default \code{FALSE} to save
 time/bandwidth.}
 
-\item{options}{options to pass to \code{\link[xml2:read_html]{xml2::read_html()}} if \code{ret} == \code{html_document}.}
+\item{options}{options to pass to \code{\link[xml2:read_xml]{xml2::read_html()}} if \code{ret} == \code{html_document}.}
 }
 \value{
 an \code{xml2} \code{html_document}/\code{xml_document} if \code{ret} == \code{html_document} else

@@ -1,3 +1,7 @@
+0.5.0
+* Updated for 2.43.0 jars
+* Added `timeout` to `wc_inspect()`
+
 0.4.0
 * Switched to {tinytest}
 * Updated for 2.40.0 jars

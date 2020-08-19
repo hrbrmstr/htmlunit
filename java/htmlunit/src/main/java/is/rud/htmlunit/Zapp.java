@@ -8,7 +8,7 @@ import java.io.*;
 
 public class Zapp {
 
-  public static List<WebResponse> getRequestsFor(String url, long jsDelay) throws IOException {
+  public static List<WebResponse> getRequestsFor(String url, long jsDelay, int timeout) throws IOException {
 
     final WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
@@ -16,7 +16,7 @@ public class Zapp {
     wco.setThrowExceptionOnScriptError(false);
     wco.setCssEnabled(true);
     wco.setDownloadImages(true);
-    wco.setTimeout(30000);
+    wco.setTimeout(timeout);
 
     final List<WebResponse> list = new ArrayList<>();
 

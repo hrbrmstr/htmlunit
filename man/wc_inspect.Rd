@@ -4,12 +4,17 @@
 \alias{wc_inspect}
 \title{Perform a "Developer Tools"-like Network Inspection of a URL}
 \usage{
-wc_inspect(url, js_delay = 5000L)
+wc_inspect(url, js_delay = 5000L, timeout = 30000L)
 }
 \arguments{
 \item{url}{URL to fetch}
 
 \item{js_delay}{(ms) How long to wait for JavaScript to execute/XHRs to load? (Default: 5000)}
+
+\item{timeout}{Sets the timeout (milliseconds) of the webc onnection. Set to zero for an infinite wait.
+Defaults to \code{30000}. Note: The timeout is used twice. The first is for making the socket
+connection, the second is for data retrieval. If the time is critical you must allow for twice
+the time specified here.}
 }
 \description{
 Retrieves \emph{all} content loaded

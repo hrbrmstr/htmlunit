@@ -5,12 +5,16 @@
 #' @md
 #' @param url URL to fetch
 #' @param js_delay (ms) How long to wait for JavaScript to execute/XHRs to load? (Default: 5000)
+#' @param timeout Sets the timeout (milliseconds) of the webc onnection. Set to zero for an infinite wait.
+#'        Defaults to `30000`. Note: The timeout is used twice. The first is for making the socket
+#'        connection, the second is for data retrieval. If the time is critical you must allow for twice
+#'        the time specified here.
 #' @export
-wc_inspect <- function(url, js_delay = 5000L) {
+wc_inspect <- function(url, js_delay = 5000L, timeout = 30000L) {
 
   app <- J("is.rud.htmlunit.Zapp")
 
-  res <- app$getRequestsFor(url, .jlong(js_delay))
+  res <- app$getRequestsFor(url, .jlong(js_delay), .jint(timeout))
   res <- as.list(res)
 
   lapply(res, function(.x) {
