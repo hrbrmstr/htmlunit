@@ -4,30 +4,29 @@ Title: Tools to Scrape Dynamic Web Content via the 'HtmlUnit' Java Library
 Version: 0.5.0
 Date: 2020-07-18
 Authors@R: c(
-    person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
+    person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5670-2640")),
     person("Everet", "Rummel", email = "everet.rummel@gmail.com", role = "ctb")
   )
 Maintainer: Bob Rudis <bob@rud.is>
-Description: 'HtmlUnit' (<https://htmlunit.sourceforge.net/>) is a "'GUI'-Less 
-    browser for 'Java' programs". It models 'HTML' documents and provides an 'API' 
-    that allows one to invoke pages, fill out forms, click links and more just like 
+Description: 'HtmlUnit' (<https://htmlunit.sourceforge.net/>) is a "'GUI'-Less
+    browser for 'Java' programs". It models 'HTML' documents and provides an 'API'
+    that allows one to invoke pages, fill out forms, click links and more just like
     one does in a "normal" browser. The library has fairly good and constantly
-    improving 'JavaScript' support and is able to work even with quite complex 'AJAX' 
+    improving 'JavaScript' support and is able to work even with quite complex 'AJAX'
     libraries, simulating 'Chrome', 'Firefox' or 'Internet Explorer' depending on
-    the configuration used. It is typically used for testing purposes or to retrieve 
+    the configuration used. It is typically used for testing purposes or to retrieve
     information from web sites. Tools are provided to work with this library
-    at a higher level than provided by the exposed 'Java' libraries in the 
+    at a higher level than provided by the exposed 'Java' libraries in the
     'htmlunitjars' package.
-URL: https://git.rud.is/hrbrmstr/htmlunit
-BugReports: https://git.rud.is/hrbrmstr/htmlunit/issues
+URL: https://github.com/hrbrmstr/htmlunit
 Encoding: UTF-8
 License: Apache License 2.0 | file LICENSE
-Imports: 
+Imports:
     magrittr
-Suggests: 
+Suggests:
     covr, tinytest
-Depends: 
+Depends:
     R (>= 3.6.0),
     rJava,
     htmlunitjars (>= 2.43.0),
@@ -35,4 +34,4 @@ Depends:
     xml2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Remotes: gitlab::hrbrmstr/htmlunitjars
+Remotes: github::hrbrmstr/htmlunitjars
